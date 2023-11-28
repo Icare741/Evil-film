@@ -14,21 +14,20 @@ class MovieController extends Controller
      */
     public function index(Request $request)
     {
+        $filters = ['title', 'release_date', 'genre_id'];
         $movies = \App\Models\Movie::query();
 
-        if ($request->has('title')) {
-            $movies->where('title', 'like', '%' . $request->title . '%');
+        foreach ($filters as $filter) {
+            if ($request->has($filter)) {
+                $movies->where($filter, $request->$filter);
+            }
         }
 
-        if ($request->has('release_date')) {
-            $movies->where('release_date', $request->release_date);
-        }
-
-        // With pagination
         return response()->json([
             'movies' => $movies->paginate(10),
         ]);
     }
+
 
     /**
      * @lrd:start

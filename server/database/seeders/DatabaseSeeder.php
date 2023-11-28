@@ -20,5 +20,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'jimmy@example.com',
             'api_token'=> Str::random(60),
         ]);
+
+        $this->call([
+            MovieSeeder::class,
+        ]);
     }
 }

@@ -16,9 +16,17 @@ class Movie extends Model
         'poster_path',
         'backdrop_path',
         'overview',
+
     ];
 
     protected $casts = [
         'release_date' => 'date',
     ];
+
+
+
+    public function genres()
+    {
+        return $this->belongsTo(Genre::class);
+    }
 }

@@ -23,6 +23,7 @@ class MovieFactory extends Factory
             'poster_path' => $this->faker->imageUrl(),
             'backdrop_path' => $this->faker->imageUrl(),
             'overview' => $this->faker->paragraph(),
+            'genre_id' => \App\Models\Genre::factory(),
 
 
         ];

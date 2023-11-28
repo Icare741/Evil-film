@@ -9,7 +9,7 @@ class MovieController extends Controller
 
     /**
      * @lrd:start
-     * Return all the movies
+     * Return all the movies with filter
      * @lrd:end
      */
     public function index(Request $request)

@@ -7,7 +7,20 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    //
+    /**
+     * @lrd start
+     * Return the current user
+     * @lrd end
+     */
+    public function me(Request $request)
+    {
+        return $request->user();
+    }
+
+    /**
+     * @LRDparam username string|max:32
+     * @LRDparam nickaname string|nullable|max:32
+     */
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -30,6 +43,11 @@ class UserController extends Controller
         ], 401);
     }
 
+    /**
+     * @LRDparam name string|max:32
+     * @LRDparam email string|email
+     * @LRDparam password string
+     */
     public function register(Request $request)
     {
         $request->validate([
@@ -52,6 +70,11 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * @ldr start
+     * Logout the user
+     * @ldr end
+     */
     public function logout(Request $request)
     {
         /** @var \App\Models\User $user */

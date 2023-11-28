@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-    //
 
+    /**
+     * @lrd:start
+     * Return all the movies
+     * @lrd:end
+     */
     public function index(Request $request)
     {
         $movies = \App\Models\Movie::query();
@@ -25,6 +29,11 @@ class MovieController extends Controller
         ]);
     }
 
+    /**
+     * @lrd:start
+     * Return a specific movie
+     * @lrd:end
+     */
     public function show($id)
     {
         $movie = \App\Models\Movie::find($id);
@@ -40,6 +49,13 @@ class MovieController extends Controller
         ]);
     }
 
+    /**
+     * @LRDparam title string|max:255
+     * @LRDparam release_date date
+     * @LRDparam poster_path string
+     * @LRDparam backdrop_path string
+     * @LRDparam overview string
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -58,6 +74,13 @@ class MovieController extends Controller
         ]);
     }
 
+    /**
+     * @LRDparam title string|max:255
+     * @LRDparam release_date date
+     * @LRDparam poster_path string
+     * @LRDparam backdrop_path string
+     * @LRDparam overview string
+     */
     public function update(Request $request, \App\Models\Movie $movie)
     {
         $request->validate([
@@ -76,6 +99,11 @@ class MovieController extends Controller
         ]);
     }
 
+    /**
+     * @lrd:start
+     * Delete a specific movie
+     * @lrd:end
+     */
     public function destroy(\App\Models\Movie $movie)
     {
         $movie->delete();

@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'auth:api'], static function () {
-    Route::get('/me', static function (Request $request) {
-        return $request->user();
-    });
+    Route::get('/me', [UserController::class, 'me']);
 
     Route::get('/movies', [MovieController::class, 'index']);
     Route::post('/movies', [MovieController::class, 'store']);

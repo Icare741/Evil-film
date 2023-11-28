@@ -24,8 +24,9 @@ class MovieController extends Controller
             $movies->where('release_date', $request->release_date);
         }
 
+        // With pagination
         return response()->json([
-            'movies' => $movies->get(),
+            'movies' => $movies->paginate(10),
         ]);
     }
 
